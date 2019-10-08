@@ -1,0 +1,32 @@
+<h1>New Job</h1>
+
+<%= form_with scope: :job, url: jobs_path, local: true do |form| %>
+  <p>
+    <%= form.label :job %><br>
+    <%= form.text_field :job %>
+  </p>
+ 
+  <p>
+    <%= form.label :summary %><br>
+    <%= form.text_area :summary , size: "50x2" %>
+  </p>
+  
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, size: "50x10" %>
+  </p>
+ 
+  <p>
+    <%= form.label :payment %><br>
+    <%= form.number_field :amount, step: :any%>
+  </p>
+  
+  <p>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
