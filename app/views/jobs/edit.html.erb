@@ -1,12 +1,11 @@
-<h1>New Job</h1>
+<h1>Edit Job</h1>
 
-<%= form_with scope: :job, url: jobs_path, local: true do |form| %>
-
+<%= form_with(model: @job, local: true)do |form| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@job.errors.count, "error") %> prohibited
-        this job from being saved:
+        this article from being saved:
       </h2>
       <ul>
         <% @job.errors.full_messages.each do |msg| %>
@@ -23,12 +22,12 @@
  
   <p>
     <%= form.label :summary %><br>
-    <%= form.text_area :summary , size: "50x2" %>
+    <%= form.text_area :summary %>
   </p>
-  
+
   <p>
     <%= form.label :description %><br>
-    <%= form.text_area :description, size: "50x10" %>
+    <%= form.text_area :description %>
   </p>
  
   <p>
@@ -40,7 +39,6 @@
     <%= form.label :jobDate %><br>
     <%= form.date_field :jobDate %>
   </p>
-  
   <p>
     <%= form.submit %>
   </p>
