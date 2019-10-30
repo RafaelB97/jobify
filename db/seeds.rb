@@ -17,7 +17,6 @@
 #
 
 jobs.destroy_all
-jobs.destroy_all
 
 100.times do |index|
   jobs.create!( name: Faker::Job.title,
