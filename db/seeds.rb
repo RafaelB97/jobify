@@ -16,10 +16,9 @@
 #  t.datetime "updated_at", null: false
 #
 
-jobs.destroy_all
 
 100.times do |index|
-  jobs.create!( name: Faker::Name.name,
+  Job.create!( name: Faker::Name.name,
                 summary: Faker::Lorem.sentence(3, false, 0).chop,
                 description: Faker::Lorem.paragraph,
                 payment: Faker::Number.between(1, 1000),
@@ -27,5 +26,3 @@ jobs.destroy_all
                 created_at: Faker::Date.forward,
                 updated_at: Faker::Date.forward)
 end
-
-p "Created #{jobs.count} jobs"
