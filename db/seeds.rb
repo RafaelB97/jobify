@@ -17,9 +17,10 @@
 #
 
 jobs.destroy_all
+jobs.destroy_all
 
 100.times do |index|
-  jobs.create!( name: Faker::Name.name,
+  jobs.create!( name: Faker::Job.title,
                 summary: Faker::Lorem.sentence(3, false, 0).chop,
                 description: Faker::Lorem.paragraph,
                 payment: Faker::Number.between(1, 1000),
