@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: one
+  user: 
+  accepted: false
+  rateJob: 1
+  rateEmployee: 1
+  amount: 
+  paid: false
+
+two:
+  job: two
+  user: 
+  accepted: false
+  rateJob: 1
+  rateEmployee: 1
+  amount: 
+  paid: false

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :pages
-  resources :jobs
+  resources :jobs do 
+    resources :applications
+  end
   
   # TODO searching why this works with app/controllers/application_controller.rb
   # TODO Search why if you delete after_sign_in_path_for from app/controllers/application_controller.rb
