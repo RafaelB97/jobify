@@ -1,0 +1,40 @@
+<h1>Show</h1>
+<p>
+    <strong>Job</strong>
+    <%= @job.title %>
+</p>
+
+<p>
+    <strong>Description</strong>
+    <%= @job.description %>
+</p>
+
+<p>
+    <strong>Payment</strong>
+    <%= @job.payment %>
+</p>
+
+<p>
+    <strong>Date</strong>
+    <%= @job.initDate %>
+</p>
+
+<p>
+    <strong>Date</strong>
+    <%= @job.endDate %>
+</p>
+
+<p>
+    <strong>Skills</strong>
+    <%= @job.skills %>
+</p>
+
+
+<% if current_user.userType == true %>
+<%= link_to 'Destroy', job_path(@job),
+method: :delete,
+data: { confirm: 'Are you sure' } %> |
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<% end %>
+<%= link_to 'Back', jobs_path %>

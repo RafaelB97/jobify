@@ -26,6 +26,15 @@
 
         <ul class="navbar-nav">
           <% if user_signed_in? %>
+            <% if current_user.userType == false %>
+              <li class="nav item">
+                <%= link_to "Employee" , class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav item">
+                <%= link_to "Employer" , class: 'nav-link' %>
+              </li>
+            <% end %>
             <li class="nav item">
               <%= link_to "Current User", root_path , class: 'nav-link' %>
             </li>

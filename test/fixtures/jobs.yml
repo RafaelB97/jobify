@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  initDate: 2019-11-05
+  endDate: 2019-11-05
+  payment: 
+  skills: MyText
+  user: 
+
+two:
+  title: MyString
+  description: MyText
+  initDate: 2019-11-05
+  endDate: 2019-11-05
+  payment: 
+  skills: MyText
+  user: 

@@ -1,0 +1,15 @@
+class CreateJobs < ActiveRecord::Migration[5.2]
+  def change
+    create_table :jobs do |t|
+      t.string :title
+      t.text :description
+      t.date :initDate
+      t.date :endDate
+      t.numeric :payment
+      t.text :skills
+      t.references :user
+
+      t.timestamps
+    end
+  end
+end

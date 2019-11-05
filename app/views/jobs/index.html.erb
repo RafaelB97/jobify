@@ -1,0 +1,22 @@
+<h1>Index</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+ 
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= link_to job.title, job_path(job) %></td>
+      <td><%= job.user.firstName %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<% if current_user.userType == true %>
+    <%= link_to 'New Job', new_job_path %>
+<% end %>
