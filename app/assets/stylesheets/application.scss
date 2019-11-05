@@ -14,3 +14,26 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+bar navbar-expand-lg navbar-dark bg-dark {
+    display: inline-flex;
+    color: #111;
+}
+
+.myCenter {
+    display: block;
+    text-align: justify;
+    padding: 0% 15% 0% 15%;
+}
+
+.notice {
+    color: green;
+    display: inline;
+    text-align: center;
+}
+
+.alert {
+    color: red;
+    display: inline;
+    text-align: center;
+}

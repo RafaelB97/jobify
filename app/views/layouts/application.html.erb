@@ -10,10 +10,11 @@
   </head>
 
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <%= link_to "Jobify", root_path, class: 'navbar-brand' %>
-        
+
         <ul class="navbar-nav mr-auto">
           <li class="nav item">
             <%= link_to "About us", pages_about_url , class: 'nav-link' %>
@@ -28,16 +29,18 @@
           <% if user_signed_in? %>
             <% if current_user.userType == false %>
               <li class="nav item">
-                <%= link_to "Employee" , class: 'nav-link' %>
+                <%#= link_to "Employee" , class: 'nav-link' %>
+                <%= link_to "Home", root_path , class: 'nav-link text-success' %>
               </li>
             <% else %>
               <li class="nav item">
-                <%= link_to "Employer" , class: 'nav-link' %>
+                <%#= link_to "Employer" , class: 'nav-link' %>
+                <%= link_to "Home", root_path , class: 'nav-link text-warning' %>
               </li>
             <% end %>
-            <li class="nav item">
-              <%= link_to "Current User", root_path , class: 'nav-link' %>
-            </li>
+            <!-- <li class="nav item">
+              <%#= link_to "Current User", root_path , class: 'nav-link' %>
+            </li> -->
             <li class="nav item">
               <%= link_to "Log Out", destroy_user_session_path , class: 'nav-link', method: :delete%>
             </li>

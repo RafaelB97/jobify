@@ -1,5 +1,7 @@
-<h2>Sign up</h2>
 
+
+<div class="myCenter">
+<h2>Sign up</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -17,12 +19,12 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :birthday %><br>
     <%= f.date_field :birthday %>
   </div>
-  
+
   <div class="field">
     <%= f.label :address %><br>
     <%= f.text_area :address %>
@@ -49,6 +51,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
