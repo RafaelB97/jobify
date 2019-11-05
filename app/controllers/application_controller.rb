@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     puts session[:userType]
     session[:userType] = current_user.userType
     puts current_user.userType
-    stored_location_for(resource) || pages_home_path
+    root_path
   end
 
   protected

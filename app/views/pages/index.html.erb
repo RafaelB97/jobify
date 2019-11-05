@@ -1,0 +1,16 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<% if current_user %>
+  <%= current_user.email %>
+  <% if current_user.userType %>
+    <h1>True</h1>
+    <% current_user.userType %> 
+  <% else %>
+    <h1>False</h1>
+    <% current_user.userType %> 
+  <% end %>
+<% end %>
+
+<%= link_to "Employee Meeee", pages_employee_path %>
+<%= link_to "Employer Meeee", pages_employer_path %>
