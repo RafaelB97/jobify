@@ -1,12 +1,12 @@
 <% if current_user %>
-<div class="modal-body row">
- <div class="col-md-6">
-   <%= link_to "Employee Me", pages_employee_path , class:"btn btn-primary" %>
- </div>
- <div class="col-md-6">
-   <%= link_to "Get Employees", pages_employer_path , class:"btn btn-secondary"%>
- </div>
-</div>
+  <div class="modal-body row text-center">
+    <div class="col-md-6">
+      <%= link_to "Employee Me", pages_employee_path , class:"btn btn-primary" %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "Get Employees", pages_employer_path , class:"btn btn-secondary"%>
+    </div>
+  </div>
 
   <!-- <h1><%= current_user.firstName %></h1> -->
   <!-- <h1><%= current_user.email %></h1> -->
@@ -17,4 +17,14 @@
     <!-- <h1>False</h1> -->
     <%# <% current_user.userType %>
   <%# <% end %>
+<% else %>
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Welcome to Jobify!</h1>
+      <p class="lead">Mensaje de bienvenida</p>
+      <p class="lead">
+        <%= link_to "Learn more", pages_about_path, class:'btn btn-lg btn-secondary' %>
+      </p>
+    </main>
+  </div>
 <% end %>
