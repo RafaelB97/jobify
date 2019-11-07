@@ -1,18 +1,21 @@
 <h1>Index</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>User</th>
-    <th></th>
-  </tr>
- 
-  <% @jobs.each do |job| %>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><%= link_to job.title, job_path(job) %></td>
-      <td><%= job.user.firstName %></td>
+      <th>Title</th>
+      <th>User</th>
     </tr>
-  <% end %>
+  </thead>
+ 
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= link_to job.title, job_path(job) %></td>
+        <td><%= job.user.firstName %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br>

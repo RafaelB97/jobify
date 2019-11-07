@@ -39,24 +39,28 @@
     <%= link_to 'Back', jobs_path %>
     <h2>Applications</h2>
     <table>
-        <tr>
-            <th>Name</th>
-            <th>LastName</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>State</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>State</th>
+            </tr>
+        </thead>
 
-        <% @job.applications.each do |app| %>
-        <tr>
-            <td><%= app.user.firstName %></td>
-            <td><%= app.user.lastName %></td>
-            <td><%= app.user.email %></td>
-            <td><%= app.user.phone %></td>
-            <td><%= app.accepted %></td>
-        </tr>
+        <tbody>
+            <% @job.applications.each do |app| %>
+            <tr>
+                <td><%= app.user.firstName %></td>
+                <td><%= app.user.lastName %></td>
+                <td><%= app.user.email %></td>
+                <td><%= app.user.phone %></td>
+                <td><%= app.accepted %></td>
+            </tr>
+        </tbody>
     </table>
-    <% end %>
+<% end %>
 
 <% else %>
     <h2>Applicate</h2>
