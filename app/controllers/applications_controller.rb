@@ -16,7 +16,7 @@ class ApplicationsController < ApplicationController
     end
 
     def destroy
-        @job = Job.fin(params[:job_id])
+        @job = Job.find(params[:job_id])
         @comment = @job.applications.find(params[:id])
         redirect_to job_path(@job)
     end
