@@ -46,6 +46,8 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>State</th>
+                <th>Details</th>
+                <th>Accept</th>
             </tr>
         </thead>
 
@@ -57,6 +59,8 @@
                 <td><%= app.user.email %></td>
                 <td><%= app.user.phone %></td>
                 <td><%= app.accepted %></td>
+                <td><%= link_to 'Show', job_application_path(@job, app) %></td>
+                <td><%= link_to 'Accept', edit_job_application_path(@job, app) %></td>
             </tr>
             <% end %>
         </tbody>
@@ -69,5 +73,7 @@
         <%= form.submit %>
     </p>
     <% end %>
+
+    <%= link_to 'Apply', new_job_application_path(@job) %>
 
 <% end %>

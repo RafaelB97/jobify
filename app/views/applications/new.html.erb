@@ -1,0 +1,8 @@
+<h1>Confirmation</h1>
+
+<h2>Card information</h2>
+<%= form_with(model: [ @job, @job.applications.build ], local: true) do |form| %>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

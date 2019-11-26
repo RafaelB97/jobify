@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  resources :pages
   resources :jobs do 
     resources :applications
   end

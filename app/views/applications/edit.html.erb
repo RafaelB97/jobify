@@ -1,0 +1,14 @@
+<h1>Employee information</h1>
+
+<%= @job.title %>
+
+<%= @application.user.firstName %>
+
+<%= form_with(model: [@job, @application ], local: true) do |form| %>
+<p>
+    <%= form.select :accepted, options_for_select([['Pendiente', false],['Acceptado', true]]) %>
+</p>
+<p>
+    <%= form.submit %>
+</p>
+<% end %>

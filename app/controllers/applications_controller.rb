@@ -1,6 +1,18 @@
 class ApplicationsController < ApplicationController
+    def index
+    end
+
+    def show
+    end
+
+    def new
+        @job = Job.find(params[:job_id])
+    end
+
     def edit
-        puts "SI FUNCIONA!"
+        puts "SI FUNCIONA!" 
+        @job = Job.find(params[:job_id])
+        @application = @job.applications.find(params[:id])
     end
 
     def create
@@ -13,6 +25,10 @@ class ApplicationsController < ApplicationController
 
     def update
         puts "SI FUNCIONA MEJOR"
+        @job = Job.find(params[:job_id])
+        @application = @job.applications.find(params[:id])
+        @application.update(application_params)
+        redirect_to @job
     end
 
     def destroy
@@ -20,4 +36,9 @@ class ApplicationsController < ApplicationController
         @comment = @job.applications.find(params[:id])
         redirect_to job_path(@job)
     end
+
+    private
+        def application_params
+            params.require(:application).permit(:accepted, :rateJob)
+        end
 end
