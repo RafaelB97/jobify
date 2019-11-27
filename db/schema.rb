@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_202742) do
   create_table "applications", force: :cascade do |t|
     t.integer "job_id"
     t.integer "user_id"
-    t.boolean "accepted", default: false
+    t.integer "status", default: 0
     t.integer "rateJob"
     t.integer "rateEmployee"
     t.decimal "amount"
@@ -29,8 +29,11 @@ ActiveRecord::Schema.define(version: 2019_11_05_202742) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "jobStatus", default: 0
     t.date "initDate"
+    t.time "initTime"
     t.date "endDate"
+    t.time "endTime"
     t.decimal "payment"
     t.text "skills"
     t.integer "user_id"

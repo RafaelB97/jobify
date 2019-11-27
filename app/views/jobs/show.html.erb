@@ -58,7 +58,7 @@
                 <td><%= app.user.lastName %></td>
                 <td><%= app.user.email %></td>
                 <td><%= app.user.phone %></td>
-                <td><%= app.accepted %></td>
+                <td><%= app.status.capitalize() %></td>
                 <td><%= link_to 'Show', job_application_path(@job, app) %></td>
                 <td><%= link_to 'Accept', edit_job_application_path(@job, app) %></td>
             </tr>

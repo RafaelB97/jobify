@@ -3,7 +3,7 @@ class CreateApplications < ActiveRecord::Migration[5.2]
     create_table :applications do |t|
       t.references :job, foreign_key: true
       t.references :user
-      t.boolean :accepted, :default => false
+      t.integer :status, :default => 0
       t.integer :rateJob
       t.integer :rateEmployee
       t.numeric :amount

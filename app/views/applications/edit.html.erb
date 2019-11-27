@@ -5,10 +5,10 @@
 <%= @application.user.firstName %>
 
 <%= form_with(model: [@job, @application ], local: true) do |form| %>
-<p>
-    <%= form.select :accepted, options_for_select([['Pendiente', false],['Acceptado', true]]) %>
-</p>
-<p>
-    <%= form.submit %>
-</p>
+    <p>
+        <%= form.select :status, options_for_select([['Pendiente', "pendiente"],['Aceptado', "aceptado"], ['Rechazado', 'rechazado']]) %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
 <% end %>
