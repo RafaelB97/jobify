@@ -1,57 +1,96 @@
 
-
-<div class="myCenter">
 <h2>Sign up</h2>
+
+<%# TODO Error looks funky %>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :firstName %><br>
-    <%= f.text_field :firstName, autofocus: true %>
-  </div>
+<div class="mb-3">
 
-  <div class="field">
-    <%= f.label :lastName %><br>
-    <%= f.text_field :lastName %>
-  </div>
+    <!-- First Name -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :firstName %></span>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+        <%= f.text_field :firstName, autofocus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :birthday %><br>
-    <%= f.date_field :birthday %>
-  </div>
+    <!-- Last Name -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :lastName %></span>
+        </div>
 
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
+        <%= f.text_field :lastName %>
+    </div>
 
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.telephone_field :phone %>
-  </div>
+    <!-- E-Mail -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :email %></span>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <%= f.email_field :email, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <!-- Date of Birth -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :birthday %></span>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+        <%= f.date_field :birthday %>
+    </div>
 
+    <!-- Address -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :address %></span>
+        </div>
+
+        <%= f.text_area :address %>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :phone %></span>
+        </div>
+
+        <%= f.telephone_field :phone %>
+    </div>
+
+    <!-- Password -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :password %></span>
+        </div>
+
+        <%= f.password_field :password, autocomplete: "new-password" %>
+
+        <% if @minimum_password_length %>
+        <em>&nbsp(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+
+    </div>
+
+    <!-- Password Confirmation -->
+    <div class="field input-group mb-3 d-flex">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= f.label :password_confirmation %></span>
+        </div>
+
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Sign up" %>
+    </div>
+
+
+</div>
 <% end %>
 
 <%= render "devise/shared/links" %>
