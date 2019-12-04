@@ -5,6 +5,11 @@
 </p>
 
 <p>
+    <strong>Autor</strong>
+    <%= @job.user.firstName %>
+</p>
+
+<p>
     <strong>Description</strong>
     <%= @job.description %>
 </p>
@@ -30,7 +35,7 @@
 </p>
 
 
-<% if current_user.userType == true %>
+<% if current_user.userType == true && current_user == @job.user %>
     <%= link_to 'Destroy', job_path(@job),
     method: :delete,
     data: { confirm: 'Are you sure' } %> |
@@ -61,6 +66,7 @@
                 <td><%= app.status.capitalize() %></td>
                 <td><%= link_to 'Show', job_application_path(@job, app) %></td>
                 <td><%= link_to 'Accept', edit_job_application_path(@job, app) %></td>
+                <td><%= link_to 'Delete', [app.job, app], method: :delete, data: { confirm: 'Estas seguro' }%></td>
             </tr>
             <% end %>
         </tbody>

@@ -4,6 +4,8 @@ class JobsController < ApplicationController
     def index
         if current_user.userType == false
             @jobs = Job.all 
+            @accepts = Application.where(user: current_user).where(status: "aceptado")
+            @pending = Application.where(user: current_user).where(status: ["pendiente", "rechazado"])
         else
             @jobs = Job.where(user: current_user)
         end

@@ -1,4 +1,6 @@
 class ApplicationsController < ApplicationController
+    before_action :authenticate_user!
+
     def index
     end
 
@@ -34,6 +36,7 @@ class ApplicationsController < ApplicationController
     def destroy
         @job = Job.find(params[:job_id])
         @comment = @job.applications.find(params[:id])
+        @comment.destroy
         redirect_to job_path(@job)
     end
 

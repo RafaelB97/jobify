@@ -1,4 +1,61 @@
-<h1>Index</h1>
+<h1 class="text-center">Jobs</h1>
+
+<% if current_user.userType == false %>
+  <h2>Accepted applications</h2>
+  <% if @accepts.length != 0 %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Job title</th>
+          <th>User</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @accepts.each do |app| %>
+          <tr>
+            <td><%= app.job.title %></td>
+            <td><%= app.user.firstName %></td>
+            <td><%= app.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No current accepted applications</p>
+  <% end %>
+
+  <h2>Applications</h2>
+  <% if @pending.length != 0%>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Job title</th>
+          <th>User</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @pending.each do |app| %>
+          <tr>
+            <td><%= app.job.title %></td>
+            <td><%= app.user.firstName %></td>
+            <td><%= app.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No current applications</p>
+  <% end%>
+
+  <h2>Find job</h2>
+
+<% else %>
+  <h2>Your jobs</h2>
+<% end %>
 
 <table class="table table-striped">
   <thead>
