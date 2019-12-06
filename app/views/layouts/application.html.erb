@@ -1,64 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Jobify</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <%= link_to "Jobify", root_path, class: 'navbar-brand' %>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
 
-        <ul class="navbar-nav mr-auto">
-          <li class="nav item">
-            <%= link_to "About us", pages_about_url , class: 'nav-link' %>
-          </li>
-          <li class="nav item">
-            <%= link_to "FAQ", pages_faq_url , class: 'nav-link' %>
-          </li>
-        </ul>
+            <!-- Home Element -->
+            <%= link_to "Jobify", root_path, class: 'navbar-brand text-primary' %>
+
+            <!-- Sub-Pages -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav item">
+                    <%= link_to "About us", pages_about_url , class: 'nav-link' %>
+                </li>
+                <li class="nav item">
+                    <%= link_to "FAQ", pages_faq_url , class: 'nav-link' %>
+                </li>
+            </ul>
 
 
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
-            <% if current_user.userType == false %>
-              <li class="nav item">
-                <%#= link_to "Employee" , class: 'nav-link' %>
-                <%= link_to current_user.firstName, root_path , class: 'nav-link text-success' %>
-              </li>
+            <!-- Navbar Controls -->
+            <ul class="navbar-nav">
+
+            <% if user_signed_in? %>
+            <!-- User Home + Corresponding Color TODO BADGE -->
+
+                <% if current_user.userType == false %>
+                        <li class="nav item">
+                            <%#= link_to "Employee" , class: 'nav-link' %>
+                            <%= link_to current_user.firstName , root_path , class: 'nav-link text-success' %>
+                        </li>
+                <% else %>
+                        <li class="nav item">
+                            <%#= link_to "Employer" , class: 'nav-link' %>
+                            <%= link_to current_user.firstName , root_path , class: 'nav-link text-warning' %>
+                        </li>
+                <% end %>
+
+                <!-- Logout button -->
+                <li class="nav item">
+                    <%= link_to "Log Out", destroy_user_session_path , class: 'nav-link', method: :delete%>
+                </li>
+
+
             <% else %>
-              <li class="nav item">
-                <%#= link_to "Employer" , class: 'nav-link' %>
-                <%= link_to current_user.firstName , root_path , class: 'nav-link text-warning' %>
-              </li>
+                <!-- Sign in button TODO Pretty-->
+                <li class="nav item">
+                    <%= link_to "Sign in", new_user_session_path , class: 'nav-link' %>
+                </li>
+
+                <!-- Create Accoutn button -->
+                <li class="nav item">
+                    <%= link_to "Create acount", new_user_registration_path , class: 'btn btn-primary' %>
+                </li>
             <% end %>
+            </ul>
 
-            <li class="nav item">
-              <%= link_to "Log Out", destroy_user_session_path , class: 'nav-link', method: :delete%>
-            </li>
-          <% else %>
-            <li class="nav item">
-              <%= link_to "Sign in", new_user_session_path , class: 'nav-link' %>
-            </li>
-            <li class="nav item">
-              <%= link_to "Create acount", new_user_registration_path , class: 'btn btn-primary' %>
-            </li>
-          <% end %>
-        </ul>
-
-      </div>
+        </div>
     </nav>
 
+
+    <!-- Notification Area -->
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+
+        <!-- Alerts -->
+        <!-- <p class="alert"><%= alert %></p> -->
+        <% if alert.present? %>
+            <div class="alert alert-warning alert-dismissible fade show d-block text-center" role="alert">
+                <strong>Holy Guacamole!</strong> &nbsp <%= alert %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% end %>
+
+        <!-- Notifications -->
+        <!-- <p class="notice alert-dismissable"><%= notice %></p> -->
+        <% if notice.present? %>
+            <div class="alert notice alert-info alert-dismissible fade show d-block text-center text-info" role="notice">
+                <%= notice %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% end %>
+
     </div>
-  </body>
+
+    <!-- Content -->
+    <div class="container">
+
+        <!-- Spacer -->
+        <span class="my-1">&nbsp</span>
+
+        <!-- Ruby Content -->
+        <%= yield %>
+    </div>
+
+
+</body>
 </html>
