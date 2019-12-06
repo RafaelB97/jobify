@@ -30,56 +30,67 @@
 </p>
 
 <p>
+    <strong>Number of Employees</strong>
+    <%= @job.maxNumber %>/ <%= @count %> 
+</p>
+
+<p>
     <strong>Skills</strong>
     <%= @job.skills %>
 </p>
 
+<% if current_user %>
+    <% if current_user.userType == true && current_user == @job.user %>
+        <%= link_to 'Destroy', job_path(@job),
+        method: :delete,
+        data: { confirm: 'Are you sure' } %> |
 
-<% if current_user.userType == true && current_user == @job.user %>
-    <%= link_to 'Destroy', job_path(@job),
-    method: :delete,
-    data: { confirm: 'Are you sure' } %> |
+        <%= link_to 'Edit', edit_job_path(@job) %> |
+        <%= link_to 'Back', jobs_path %>
+        <h2>Applications</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>State</th>
+                    <th>Details</th>
+                    <th>Accept</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
 
-    <%= link_to 'Edit', edit_job_path(@job) %> |
-    <%= link_to 'Back', jobs_path %>
-    <h2>Applications</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>LastName</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>State</th>
-                <th>Details</th>
-                <th>Accept</th>
-            </tr>
-        </thead>
+            <tbody>
+                <% @job.applications.each do |app| %>
+                <tr>
+                    <td><%= app.user.firstName %></td>
+                    <td><%= app.user.lastName %></td>
+                    <td><%= app.user.email %></td>
+                    <td><%= app.user.phone %></td>
+                    <td><%= app.status.capitalize() %></td>
+                    <td><%= link_to 'Show', job_application_path(@job, app) %></td>
+                    <td><%= link_to 'Accept', edit_job_application_path(@job, app) %></td>
+                    <td><%= link_to 'Delete', [app.job, app], method: :delete, data: { confirm: 'Estas seguro' }%></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
 
-        <tbody>
-            <% @job.applications.each do |app| %>
-            <tr>
-                <td><%= app.user.firstName %></td>
-                <td><%= app.user.lastName %></td>
-                <td><%= app.user.email %></td>
-                <td><%= app.user.phone %></td>
-                <td><%= app.status.capitalize() %></td>
-                <td><%= link_to 'Show', job_application_path(@job, app) %></td>
-                <td><%= link_to 'Accept', edit_job_application_path(@job, app) %></td>
-                <td><%= link_to 'Delete', [app.job, app], method: :delete, data: { confirm: 'Estas seguro' }%></td>
-            </tr>
+    <% else %>
+        <% if current_user != @job.user %>
+            <h2>Applicate <%= @userTries %> </h2>
+            <% if @count != @job.maxNumber %>
+                <% if @userTries == 0 %>
+                    <%= link_to 'Apply', new_job_application_path(@job) %>
+                <% else %>
+                    <p>Solicitud mandada</p>
+                <% end %>
+            <% else %>
+                <p>Trabajo lleno, intenta mas tarde!</p>
             <% end %>
-        </tbody>
-    </table>
+        <% end %>
 
-<% else %>
-    <h2>Applicate</h2>
-    <%= form_with(model: [ @job, @job.applications.build ], local: true) do |form| %>
-    <p>
-        <%= form.submit %>
-    </p>
     <% end %>
-
-    <%= link_to 'Apply', new_job_application_path(@job) %>
-
 <% end %>

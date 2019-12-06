@@ -5,9 +5,16 @@
 <%= @application.user.firstName %>
 
 <%= form_with(model: [@job, @application ], local: true) do |form| %>
-    <p>
-        <%= form.select :status, options_for_select([['Pendiente', "pendiente"],['Aceptado', "aceptado"], ['Rechazado', 'rechazado']]) %>
-    </p>
+    <%# TODO Make this a variable %>
+    <% if @job.maxNumber == @job.applications.where(status: "aceptado").size %>
+        <p>
+            <%= form.select :status, options_for_select([['Pendiente', "pendiente"], ['Rechazado', 'rechazado']]) %>
+        </p>
+    <% else %>
+        <p>
+            <%= form.select :status, options_for_select([['Pendiente', "pendiente"],['Aceptado', "aceptado"], ['Rechazado', 'rechazado']]) %>
+        </p>
+    <% end %>
     <p>
         <%= form.submit %>
     </p>

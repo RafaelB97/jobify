@@ -1,5 +1,6 @@
 <h1 class="text-center">Jobs</h1>
 
+<%# TODO Allow that no user can see this page %>
 <% if current_user.userType == false %>
   <h2>Accepted applications</h2>
   <% if @accepts.length != 0 %>

@@ -15,6 +15,9 @@ class ApplicationsController < ApplicationController
         puts "SI FUNCIONA!" 
         @job = Job.find(params[:job_id])
         @application = @job.applications.find(params[:id])
+        if current_user != @job.user
+            redirect_to job_path(@job)
+        end
     end
 
     def create

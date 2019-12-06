@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_202742) do
     t.time "initTime"
     t.date "endDate"
     t.time "endTime"
+    t.integer "maxNumber"
     t.decimal "payment"
     t.text "skills"
     t.integer "user_id"

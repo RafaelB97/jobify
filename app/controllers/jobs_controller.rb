@@ -13,6 +13,9 @@ class JobsController < ApplicationController
 
     def show
         @job = Job.find(params[:id])
+        @count = @job.applications.where(status: "aceptado").size
+        # @userTries = @job.applications.where.not(status: "rechazado").where(user: current_user).size
+        @userTries = @job.applications.where(user: current_user).size
     end
 
     def new
@@ -21,6 +24,9 @@ class JobsController < ApplicationController
 
     def edit
         @job = Job.find(params[:id])
+        if current_user != @job.user
+            redirect_to @job
+        end
     end
 
     def create
@@ -54,6 +60,6 @@ class JobsController < ApplicationController
 
     private
         def job_params
-            params.require(:job).permit(:title, :description, :initDate, :endDate, :payment, :skills)
+            params.require(:job).permit(:title, :description, :initDate, :endDate, :payment, :skills, :maxNumber)
         end
 end

@@ -40,6 +40,11 @@
     <%= form.label :payment %><br>
     <%= form.number_field :payment, step: :any%>
   </p>
+
+  <p>
+    <%= form.label :maxNumber %><br>
+    <%= form.number_field :maxNumber, in: 1..100%>
+  </p>
   
   <p>
     <%= form.label :skills %><br>
