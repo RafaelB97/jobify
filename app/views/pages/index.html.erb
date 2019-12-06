@@ -28,8 +28,11 @@
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <main role="main" class="inner cover">
 
-        <h1 class="cover-heading text-primary">Welcome to Jobify!</h1>
-        <p class="lead">Please <i class="text-warning">Sign In</i> or <i class="text-warning">Register</i> </p>
+        <h1 class="cover-heading text-info">Welcome to Jobify!</h1>
+        <p class="lead">Please
+            <i><%= link_to "Sign in", new_user_session_path , class: 'text-link text-warning text-decoration-none' %></i>
+            or
+            <i><%= link_to "Register", new_user_registration_path , class: 'text-link text-warning text-decoration-none' %></i> </p>
 
         <p class="lead" hidden>
             <%= link_to "Learn more", pages_about_path, class:'btn btn-lg btn-secondary' %>

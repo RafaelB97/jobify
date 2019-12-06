@@ -11,11 +11,11 @@
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+    <nav class="navbar nav-pills sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
 
             <!-- Home Element -->
-            <%= link_to "Jobify", root_path, class: 'navbar-brand text-primary' %>
+            <%= link_to "Jobify", root_path, class: 'navbar-brand text-info' %>
 
             <!-- Sub-Pages -->
             <ul class="navbar-nav mr-auto">
@@ -32,19 +32,16 @@
             <ul class="navbar-nav">
 
             <% if user_signed_in? %>
-            <!-- User Home + Corresponding Color TODO BADGE -->
+            <!-- User Home + Corresponding Color -->
 
-                <% if current_user.userType == false %>
-                        <li class="nav item">
-                            <%#= link_to "Employee" , class: 'nav-link' %>
-                            <%= link_to "Home", root_path , class: 'nav-link text-success' %>
-                        </li>
-                <% else %>
-                        <li class="nav item">
-                            <%#= link_to "Employer" , class: 'nav-link' %>
-                            <%= link_to "Home", root_path , class: 'nav-link text-warning' %>
-                        </li>
-                <% end %>
+                <!-- Home Badge -->
+                <li class="nav item">
+                    <% if current_user.userType == false %>
+                        <%= link_to "Home", root_path , class: 'nav-link badge-success text-light' %>
+                    <% else %>
+                        <%= link_to "Home", root_path , class: 'nav-link badge-warning text-light' %>
+                    <% end %>
+                </li>
 
                 <!-- Logout button -->
                 <li class="nav item">
@@ -60,12 +57,12 @@
 
                 <!-- Create Accoutn button -->
                 <li class="nav item">
-                    <%= link_to "Create acount", new_user_registration_path , class: 'btn btn-primary' %>
+                    <%= link_to "Create acount", new_user_registration_path , class: 'btn btn-info' %>
                 </li>
             <% end %>
             </ul>
 
-        </div>
+    </div>
     </nav>
 
 
