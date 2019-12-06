@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+=begin
+  This functions is for the strong parameters that ruby has, so when we create a device model, this function works
+  like strong parameters in ruby
+=end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstName, :lastName, :birthday, :address, :phone, :userType])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:userType])

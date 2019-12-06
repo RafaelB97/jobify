@@ -46,7 +46,6 @@
         data: { confirm: 'Are you sure' } %> |
 
         <%= link_to 'Edit', edit_job_path(@job) %> |
-        <%= link_to 'Back', jobs_path %>
         <h2>Applications</h2>
         <table class="table table-striped">
             <thead>
@@ -94,3 +93,5 @@
 
     <% end %>
 <% end %>
+
+<%= link_to "Back", jobs_path %>
