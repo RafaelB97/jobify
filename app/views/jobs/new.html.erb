@@ -15,37 +15,40 @@
       </ul>
     </div>
   <% end %>
-  
+
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>
- 
+
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description, size: "50x10" %>
   </p>
- 
+
   <p>
-    <%= form.label :initDate %><br>
+    <%#= form.label :initDate %>
+    <p>Start Date</p>
     <%= form.date_field :initDate %>
   </p>
 
   <p>
-    <%= form.label :endDate %><br>
+    <%#= form.label :endDate %>
+    <p>End Date</p>
     <%= form.date_field :endDate %>
   </p>
-  
+
   <p>
     <%= form.label :payment %><br>
     <%= form.number_field :payment, step: :any%>
   </p>
 
   <p>
-    <%= form.label :maxNumber %><br>
+    <%#= form.label :maxNumber %>
+    <p>Max Number of Applicants</p>
     <%= form.number_field :maxNumber, in: 1..100%>
   </p>
-  
+
   <p>
     <%= form.label :skills %><br>
     <%= form.text_area :skills, size: "50x10" %>
